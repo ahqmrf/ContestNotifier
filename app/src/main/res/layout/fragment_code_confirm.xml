@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="@dimen/button_margin"
+    android:layout_marginRight="@dimen/button_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:text="@string/label_confirm_code"/>
+
+        <EditText
+            android:id="@+id/input_code"
+            style="@style/InputStyle"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:hint="@string/label_enter_code"
+            android:inputType="text"/>
+
+        <Button
+            android:id="@+id/button_submit"
+            style="@style/ButtonAccent"
+            android:layout_marginTop="16dp"
+            android:text="@string/button_submit"/>
+
+        <Button
+            android:id="@+id/button_resend"
+            style="@style/ButtonAccent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="40dp"
+            android:text="@string/button_resend"/>
+
+    </LinearLayout>
+
+    <com.rey.material.widget.ProgressView
+        android:id="@+id/progress_layout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:pv_autostart="true"
+        app:pv_circular="true"
+        app:pv_progressMode="indeterminate"
+        app:pv_progressStyle="@style/Material.Drawable.CircularProgress"/>
+
+</RelativeLayout>

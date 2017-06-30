@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Contest Notifier</string>
+    <string name="button_log_in">Log in</string>
+    <string name="label_username">Email or username</string>
+    <string name="label_password">Password</string>
+    <string name="error_empty_username">Email or username cannot be empty.</string>
+    <string name="error_password_required">Password is required.</string>
+    <string name="msg_network_problem">Connectivity problem!</string>
+    <string name="label_or">OR</string>
+    <string name="button_register">Register</string>
+    <string name="msg_error">Ooops! Something went wrong!</string>
+    <string name="label_email">Email</string>
+    <string name="label_usernameOnly">Username</string>
+    <string name="label_name">Full name</string>
+    <string name="label_workplace">Workplace</string>
+    <string name="label_confirm_password">Re-enter password</string>
+    <string name="error_empty_name">Name cannot be empty</string>
+    <string name="error_empty_workplace">Workplace is required</string>
+    <string name="error_password_confirm">Re-enter password again</string>
+    <string name="error_password_mismatch">Passwords do not match</string>
+    <string name="label_confirm_code">Confirm Activation Code</string>
+    <string name="label_enter_code">Enter confirmation code</string>
+    <string name="button_submit">Submit</string>
+    <string name="button_resend">Resend code</string>
+    <string name="msg_account_activation">Your account has been activated successfully!</string>
+    <string name="error_code_mismatch">Invalid code!</string>
+</resources>
