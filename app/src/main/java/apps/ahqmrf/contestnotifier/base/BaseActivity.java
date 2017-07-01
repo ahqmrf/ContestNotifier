@@ -55,6 +55,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         Utility.endSession();
         finishAffinity();
         openActivity(LoginActivity.class);
+        Utility.showToast(R.string.msg_logout);
     }
 
     protected void openActivity(Class<?> activity) {

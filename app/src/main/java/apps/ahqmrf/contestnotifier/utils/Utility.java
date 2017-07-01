@@ -46,4 +46,8 @@ public final class Utility {
         Preference.remove(PrefKeys.TOKEN);
         Preference.remove(PrefKeys.USER_ID);
     }
+
+    public static boolean isLoggedIn() {
+        return Preference.getLong(PrefKeys.USER_ID) != 0 && Preference.getString(PrefKeys.TOKEN) != null;
+    }
 }
