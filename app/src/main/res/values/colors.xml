@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#3e236e</color>
     <color name="colorAccent">#673AB7</color>
     <color name="buttonColor">@color/colorPrimary</color>
-    <color name="buttonColorPressed">#22133d</color>
-    <color name="buttonBorderColor">@color/colorPrimaryDark</color>
+    <color name="buttonColorPressed">@color/colorPrimaryDark</color>
+    <color name="buttonBorderColor">#8f50ff</color>
     <color name="whitey_grey">#E0E0E0</color>
     <color name="white">#FFFFFF</color>
 </resources>

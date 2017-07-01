@@ -2,4 +2,5 @@
 <resources>
     <dimen name="button_margin">24dp</dimen>
     <dimen name="edittext_padding">12dp</dimen>
+    <dimen name="button_border_width">3dp</dimen>
 </resources>
