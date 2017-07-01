@@ -28,7 +28,7 @@ public final class Utility {
         return App.getContext().getResources().getString(resId);
     }
 
-    public static void markAsLoggedIn(LoginResponse data) {
+    public static void startSession(LoginResponse data) {
         Preference.putString(PrefKeys.TOKEN, data.getToken());
         Preference.putLong(PrefKeys.USER_ID, data.getId());
     }
@@ -40,5 +40,10 @@ public final class Utility {
         } else {
             return Html.fromHtml(source);
         }
+    }
+
+    public static void endSession() {
+        Preference.remove(PrefKeys.TOKEN);
+        Preference.remove(PrefKeys.USER_ID);
     }
 }

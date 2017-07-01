@@ -24,4 +24,6 @@
     <string name="button_resend">Resend code</string>
     <string name="msg_account_activation">Your account has been activated successfully!</string>
     <string name="error_code_mismatch">Invalid code!</string>
+    <string name="menu_logout">Log out</string>
+    <string name="menu_settings">Settings</string>
 </resources>

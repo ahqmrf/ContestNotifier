@@ -1,9 +1,8 @@
 package apps.ahqmrf.contestnotifier.auth.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -14,13 +13,13 @@ import apps.ahqmrf.contestnotifier.R;
 import apps.ahqmrf.contestnotifier.auth.request.RegRequest;
 import apps.ahqmrf.contestnotifier.auth.service.AuthConnector;
 import apps.ahqmrf.contestnotifier.auth.service.CodeListener;
-import apps.ahqmrf.contestnotifier.utils.Const;
+import apps.ahqmrf.contestnotifier.base.BaseActivity;
 import apps.ahqmrf.contestnotifier.utils.Utility;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RegistrationActivity extends AppCompatActivity implements CodeListener, View.OnFocusChangeListener {
+public class RegistrationActivity extends BaseActivity implements CodeListener, View.OnFocusChangeListener {
 
     @BindView(R.id.input_email)            EditText     emailView;
     @BindView(R.id.input_username)         EditText     usernameView;
@@ -44,11 +43,10 @@ public class RegistrationActivity extends AppCompatActivity implements CodeListe
         ButterKnife.bind(this);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-        setViews();
     }
 
-    private void setViews() {
+    @Override
+    public void onViewCreated() {
         setTitle(Utility.getString(R.string.button_register));
 
         emailView.setOnFocusChangeListener(this);
@@ -148,5 +146,10 @@ public class RegistrationActivity extends AppCompatActivity implements CodeListe
     public void onFocusChange(View v, boolean hasFocus) {
         if (hasFocus) v.setBackgroundResource(R.drawable.edittext_focused);
         else v.setBackgroundResource(R.drawable.edittext);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }

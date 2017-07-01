@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -16,14 +17,14 @@ import apps.ahqmrf.contestnotifier.R;
 import apps.ahqmrf.contestnotifier.auth.response.LoginResponse;
 import apps.ahqmrf.contestnotifier.auth.service.AuthConnector;
 import apps.ahqmrf.contestnotifier.auth.service.LoginListener;
+import apps.ahqmrf.contestnotifier.base.BaseActivity;
 import apps.ahqmrf.contestnotifier.contest.ui.HomeActivity;
-import apps.ahqmrf.contestnotifier.utils.Const;
 import apps.ahqmrf.contestnotifier.utils.Utility;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity implements LoginListener, View.OnFocusChangeListener {
+public class LoginActivity extends BaseActivity implements LoginListener, View.OnFocusChangeListener {
 
     @BindView(R.id.input_username)  EditText     usernameView;
     @BindView(R.id.input_password)  EditText     passwordView;
@@ -38,11 +39,10 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, V
         ButterKnife.bind(this);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-        setViews();
     }
 
-    private void setViews() {
+    @Override
+    public void onViewCreated() {
         setSupportActionBar(toolbar);
         setTitle(Utility.getString(R.string.button_log_in));
 
@@ -52,7 +52,6 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, V
         String text = "Don't have an account yet? <font color='blue'>Click here</font> to register.";
         registerView.setText(Utility.fromHtml(text), TextView.BufferType.SPANNABLE);
     }
-
 
     @OnClick(R.id.button_login)
     void onLoginClick() {
@@ -73,13 +72,13 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, V
     }
 
     @OnClick(R.id.button_register) void onRegisterClick() {
-        startActivity(new Intent(this, RegistrationActivity.class));
+        openActivity(RegistrationActivity.class);
     }
 
     @Override
     public void onRetrieved(LoginResponse data) {
         if(data.isActivated() == 1) {
-            Utility.markAsLoggedIn(data);
+            Utility.startSession(data);
             openHomepage();
         } else {
             openConfirmCodePage(data.getEmail(), data.getCode());
@@ -87,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, V
     }
 
     private void openHomepage() {
-        startActivity(new Intent(this, HomeActivity.class));
+        openActivity(HomeActivity.class);
         finish();
     }
 
@@ -120,5 +119,10 @@ public class LoginActivity extends AppCompatActivity implements LoginListener, V
     public void onFocusChange(View v, boolean hasFocus) {
         if (hasFocus) v.setBackgroundResource(R.drawable.edittext_focused);
         else v.setBackgroundResource(R.drawable.edittext);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }
