@@ -28,4 +28,16 @@
     <string name="menu_settings">Settings</string>
     <string name="msg_logout">You have been logged out!</string>
     <string name="powered_by_hi5">Powered by Hi5</string>
+    <string name="menu_admin_panel">Admin panel</string>
+    <string name="error_permission">Permission required to select media</string>
+    <string name="msg_file_chosen">File chosen successfully</string>
+    <string name="label_add_website">Add a website</string>
+    <string name="label_website_url">Website url</string>
+    <string name="label_logo">Logo file path</string>
+    <string name="button_choose">Choose</string>
+    <string name="button_upload">Upload</string>
+    <string name="button_save">Save</string>
+    <string name="error_empty_url">Url cannot be empty</string>
+    <string name="label_website_name">Website name</string>
+    <string name="label_collapse_add_website">- Add a website</string>
 </resources>

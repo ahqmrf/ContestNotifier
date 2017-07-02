@@ -43,7 +43,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.settings) {
+        if(id == android.R.id.home) {
+            onBackPressed();
+        }
+        else if(id == R.id.settings) {
             // TODO
         } else if(id == R.id.logout) {
             logout();
@@ -62,7 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         openActivity(new Intent(this, activity));
     }
 
-    private void openActivity(Intent intent) {
+    protected void openActivity(Intent intent) {
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
@@ -83,6 +86,12 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    protected void setBackArrow() {
+        if(getSupportActionBar() !=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 }

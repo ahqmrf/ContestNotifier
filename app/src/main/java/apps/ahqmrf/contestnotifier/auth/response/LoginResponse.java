@@ -15,7 +15,8 @@ public class LoginResponse extends BaseResponse {
     @SerializedName("email") private String email;
     @SerializedName("workplace") private String workplace;
     @SerializedName("token") private String token;
-    @SerializedName("isActivated") private int activated;
+    @SerializedName("isActivated") private boolean activated;
+    @SerializedName("isAdmin") private boolean admin;
     @SerializedName("confirmationCode") private String code;
 
     public long getId() {
@@ -42,8 +43,12 @@ public class LoginResponse extends BaseResponse {
         return token;
     }
 
-    public int isActivated() {
+    public boolean isActivated() {
         return activated;
+    }
+
+    public boolean isAdmin() {
+        return admin;
     }
 
     public String getCode() {

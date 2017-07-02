@@ -1,8 +1,6 @@
 package apps.ahqmrf.contestnotifier.auth.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -77,7 +75,7 @@ public class LoginActivity extends BaseActivity implements LoginListener, View.O
 
     @Override
     public void onRetrieved(LoginResponse data) {
-        if(data.isActivated() == 1) {
+        if(data.isActivated()) {
             Utility.startSession(data);
             openHomepage();
         } else {

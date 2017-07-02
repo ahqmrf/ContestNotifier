@@ -5,7 +5,8 @@ package apps.ahqmrf.contestnotifier.utils;
  */
 
 public final class PrefKeys {
-    public static final String TOKEN   = "token";
-    public static final String NAME    = "contestNotifier";
-    public static final String USER_ID = "userId";
+    public static final String TOKEN    = "token";
+    public static final String NAME     = "contestNotifier";
+    public static final String USER_ID  = "userId";
+    public static final String IS_ADMIN = "isAdmin";
 }

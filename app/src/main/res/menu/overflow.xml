@@ -3,6 +3,12 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/admin_panel"
+        android:title="@string/menu_admin_panel"
+        android:visible="false"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/settings"
         android:title="@string/menu_settings"
         app:showAsAction="never"/>
