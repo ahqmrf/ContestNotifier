@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_add_contest"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext"
+        android:layout_marginEnd="@dimen/hz_margin"
+        android:layout_marginStart="@dimen/hz_margin"
+        android:layout_marginTop="16dp">
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/platformSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"/>
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/input_contest_name"
+        style="@style/InputStyle"
+        android:layout_marginTop="16dp"
+        android:hint="@string/label_contest_name"
+        android:inputType="text"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext"
+        android:layout_marginEnd="@dimen/hz_margin"
+        android:layout_marginStart="@dimen/hz_margin"
+        android:layout_marginTop="16dp">
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/divisionSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:id="@+id/btn_time"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/hz_margin"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="@dimen/hz_margin"
+                android:layout_marginStart="0dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_access_time_black_24dp"
+                android:tint="@color/colorPrimaryDark"/>
+
+            <EditText
+                android:id="@+id/input_time"
+                style="@style/InputStyle"
+                android:layout_toLeftOf="@id/btn_time"
+                android:layout_toStartOf="@id/btn_time"
+                android:layout_marginEnd="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="@dimen/hz_margin"
+                android:layout_marginStart="@dimen/hz_margin"
+                android:enabled="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="text"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/hz_margin"
+        android:layout_marginEnd="@dimen/hz_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_duration"
+            android:textStyle="bold"
+            android:padding="4dp"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/text_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            tools:text="00:03:00"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/hz_margin"
+        android:layout_marginEnd="@dimen/hz_margin"
+        android:weightSum="3">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext"
+            android:layout_weight="1"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp">
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/daySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:entries="@array/days"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp">
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/hourSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:entries="@array/hours"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/edittext">
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/minuteSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:entries="@array/minutes"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/input_contest_url"
+        style="@style/InputStyle"
+        android:layout_marginTop="16dp"
+        android:hint="@string/label_contest_url"
+        android:inputType="textUri"/>
+
+    <Button
+        android:id="@+id/btn_done"
+        style="@style/ButtonAccent"
+        android:layout_marginTop="16dp"
+        android:text="@string/button_save"/>
+
+</LinearLayout>

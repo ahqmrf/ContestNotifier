@@ -34,6 +34,8 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.8.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     compile 'com.binjar.prefsdroid:prefs-droid:1.1.0'
+    compile 'com.makeramen:roundedimageview:2.3.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'

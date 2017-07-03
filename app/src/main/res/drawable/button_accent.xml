@@ -6,6 +6,7 @@
                 android:width="@dimen/button_border_width"
                 android:color="@color/buttonBorderColor" />
             <solid android:color="@color/buttonColorPressed" />
+            <corners android:radius="@dimen/button_corner_radius"/>
         </shape>
     </item>
     <item android:state_focused="true">
@@ -15,6 +16,7 @@
                 android:width="@dimen/button_border_width"
                 android:color="@color/buttonBorderColor" />
             <solid android:color="@color/buttonColorPressed" />
+            <corners android:radius="@dimen/button_corner_radius"/>
         </shape>
     </item>
     <item>
@@ -24,6 +26,7 @@
                 android:width="@dimen/button_border_width"
                 android:color="@color/buttonBorderColor" />
             <solid android:color="@color/buttonColor" />
+            <corners android:radius="@dimen/button_corner_radius"/>
         </shape>
     </item>
 </selector>

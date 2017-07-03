@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#673AB7</color>
-    <color name="colorPrimaryDark">#3e236e</color>
-    <color name="colorAccent">#673AB7</color>
-    <color name="buttonColor">@color/colorPrimary</color>
-    <color name="buttonColorPressed">@color/colorPrimaryDark</color>
-    <color name="buttonBorderColor">#8f50ff</color>
+    <color name="colorPrimary">#008474</color>
+    <color name="colorPrimaryDark">#004D40</color>
+    <color name="colorAccent">@color/colorPrimary</color>
+    <color name="buttonColor">@color/colorPrimaryDark</color>
+    <color name="buttonColorPressed">#003d32</color>
+    <color name="buttonBorderColor">@color/colorPrimary </color>
     <color name="whitey_grey">#E0E0E0</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="bluish_white">#bec8f4</color>
 </resources>

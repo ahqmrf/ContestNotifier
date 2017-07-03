@@ -14,4 +14,8 @@ import apps.ahqmrf.contestnotifier.base.BaseResponse;
 public class WebsiteResponse extends BaseResponse {
 
     @SerializedName("data") private List<Website> websites;
+
+    public List<Website> getWebsites() {
+        return websites;
+    }
 }
