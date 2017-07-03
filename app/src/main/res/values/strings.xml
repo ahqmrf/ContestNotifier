@@ -48,7 +48,7 @@
     <string name="error_empty_contest_name">Contest name cannot be empty</string>
     <string name="error_website_selection">Please select a platform</string>
     <string name="error_division_selection">Please select a division</string>
-    <string name="label_duration">Contest duration: </string>
+    <string name="label_duration">Select contest duration: </string>
     <string name="label_hour">:</string>
     <string name="label_minute">:</string>
     <string name="label_day">:</string>
