@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="hours">
-        <item>hour(s)</item>
+        <item>hour</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -29,7 +29,7 @@
     </string-array>
 
     <string-array name="days">
-        <item>day(s)</item>
+        <item>day</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -41,7 +41,7 @@
     </string-array>
 
     <string-array name="minutes">
-        <item>minute(s)</item>
+        <item>minute</item>
         <item>0</item>
         <item>5</item>
         <item>10</item>

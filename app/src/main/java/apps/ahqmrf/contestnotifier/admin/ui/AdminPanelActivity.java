@@ -103,7 +103,16 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
 
     private void setSpinnerListeners() {
         daySpinnerView.setOnItemSelectedListener(this);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.simple_spinner_item, getResources().getStringArray(R.array.days));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        daySpinnerView.setAdapter(adapter);
+        adapter = new ArrayAdapter<>(this, R.layout.simple_spinner_item, getResources().getStringArray(R.array.hours));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        hourSpinnerView.setAdapter(adapter);
         hourSpinnerView.setOnItemSelectedListener(this);
+        adapter = new ArrayAdapter<>(this, R.layout.simple_spinner_item, getResources().getStringArray(R.array.minutes));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        minuteSpinnerView.setAdapter(adapter);
         minuteSpinnerView.setOnItemSelectedListener(this);
         divisionView.setOnItemSelectedListener(this);
         platformView.setOnItemSelectedListener(this);
