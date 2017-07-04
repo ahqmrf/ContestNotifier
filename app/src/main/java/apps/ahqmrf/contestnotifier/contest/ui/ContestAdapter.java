@@ -27,8 +27,7 @@ public class ContestAdapter extends RecyclerView.Adapter {
     private List<Contest> items;
 
     public ContestAdapter(List<Contest> items) {
-        this.items = new ArrayList<>();
-        this.items.addAll(items);
+        addItems(items);
     }
 
     public void addItems(List<Contest> items) {
@@ -54,12 +53,12 @@ public class ContestAdapter extends RecyclerView.Adapter {
 
     class ContestHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.contest_name) TextView  contestName;
-        @BindView(R.id.platform_name) TextView platformName;
-        @BindView(R.id.division)     TextView  division;
-        @BindView(R.id.duration)     TextView  duration;
-        @BindView(R.id.time)         TextView  time;
-        @BindView(R.id.logo)         ImageView logo;
+        @BindView(R.id.contest_name)  TextView  contestName;
+        @BindView(R.id.platform_name) TextView  platformName;
+        @BindView(R.id.division)      TextView  division;
+        @BindView(R.id.duration)      TextView  duration;
+        @BindView(R.id.time)          TextView  time;
+        @BindView(R.id.logo)          ImageView logo;
 
         ContestHolder(View itemView) {
             super(itemView);
