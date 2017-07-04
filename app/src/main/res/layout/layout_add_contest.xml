@@ -70,7 +70,10 @@
                 android:layout_marginStart="0dp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
-                android:padding="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="8dp"
                 android:src="@drawable/ic_access_time_black_24dp"
                 android:tint="@color/colorPrimaryDark"/>
 
@@ -96,30 +99,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/hz_margin"
         android:layout_marginStart="@dimen/hz_margin"
-        android:layout_marginEnd="@dimen/hz_margin">
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_duration"
-            android:textStyle="bold"
             android:padding="4dp"
-            android:textSize="16sp"/>
+            android:text="@string/label_contest_duration"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/text_duration"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="4dp"
             android:gravity="end"
+            android:padding="4dp"
             android:textSize="16sp"
             tools:text="00:03:00"/>
 
     </LinearLayout>
-
 
 
     <LinearLayout

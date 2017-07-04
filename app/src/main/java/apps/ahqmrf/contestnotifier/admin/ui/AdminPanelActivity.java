@@ -134,7 +134,7 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
         mMonth = c.get(Calendar.MONTH) + 1;
         mDay = c.get(Calendar.DAY_OF_MONTH);
 
-        date = mYear + "/" + mMonth + "/" + mDay;
+        date = mYear + "/" + (mMonth < 10? "0" : "") + mMonth + "/" + (mDay < 10? "0" : "") + mDay;
 
         timeView.setText(time + ", " + date);
     }
@@ -308,7 +308,8 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        date = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
+                        monthOfYear++;
+                        date = year + "/" + (monthOfYear < 10? "0" : "") + monthOfYear + "/" + (dayOfMonth < 10? "0" : "") +dayOfMonth;
                         timeView.setText(time + ", " + date);
 
                     }

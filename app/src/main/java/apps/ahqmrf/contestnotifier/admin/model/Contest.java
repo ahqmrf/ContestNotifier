@@ -97,4 +97,26 @@ public class Contest {
     public void setContestUrl(String contestUrl) {
         this.contestUrl = contestUrl;
     }
+
+    public String getParsedDuration() {
+        String tokens[] = duration.split(":");
+        int day = Integer.valueOf(tokens[0]);
+        int hrs = Integer.valueOf(tokens[1]);
+        int min = Integer.valueOf(tokens[2]);
+
+        String str = "";
+
+        if(day > 0) {
+            str = str + day + " day" + (day > 1? "s" : "");
+        }
+
+        if(hrs > 0) {
+            str = str + " " + hrs + " hr" + (hrs > 1? "s" : "");
+        }
+
+        if(min > 0) {
+            str = str + " " +  min + " min" + (min > 1? "s" : "");
+        }
+        return str.trim();
+    }
 }

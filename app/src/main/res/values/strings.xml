@@ -33,7 +33,7 @@
     <string name="msg_file_chosen">File chosen successfully</string>
     <string name="label_add_website">Add a contest platform</string>
     <string name="label_website_url">Platform website url</string>
-    <string name="label_logo">Selected logo</string>
+    <string name="label_logo">Platform logo</string>
     <string name="button_choose">Choose</string>
     <string name="button_upload">Upload</string>
     <string name="button_save">Submit</string>
@@ -48,8 +48,9 @@
     <string name="error_empty_contest_name">Contest name cannot be empty</string>
     <string name="error_website_selection">Please select a platform</string>
     <string name="error_division_selection">Please select a division</string>
-    <string name="label_duration">Select contest duration: </string>
+    <string name="label_contest_duration">Contest duration: </string>
     <string name="label_hour">:</string>
     <string name="label_minute">:</string>
     <string name="label_day">:</string>
+    <string name="label_duration">Duration: </string>
 </resources>
