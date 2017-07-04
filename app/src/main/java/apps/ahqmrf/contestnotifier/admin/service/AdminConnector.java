@@ -44,8 +44,7 @@ public class AdminConnector {
                 public void onResponse(Response<UploadResponse> response) {
                     UploadResponse data = response.body();
                     if(data != null) {
-                        listener.onSuccess(data.getMessage());
-                        ((UploadListener)listener).onLogoUrlRetrieved(data.getUrl());
+                        ((UploadListener)listener).onUploadSuccess(data);
                     }
                 }
             });

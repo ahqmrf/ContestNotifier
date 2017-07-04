@@ -31,6 +31,7 @@ import apps.ahqmrf.contestnotifier.R;
 import apps.ahqmrf.contestnotifier.admin.model.Contest;
 import apps.ahqmrf.contestnotifier.admin.model.Division;
 import apps.ahqmrf.contestnotifier.admin.model.Website;
+import apps.ahqmrf.contestnotifier.admin.response.UploadResponse;
 import apps.ahqmrf.contestnotifier.admin.service.AdminConnector;
 import apps.ahqmrf.contestnotifier.admin.service.GetDivisionListener;
 import apps.ahqmrf.contestnotifier.admin.service.GetWebsiteListener;
@@ -384,8 +385,9 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
     }
 
     @Override
-    public void onLogoUrlRetrieved(String logoUrl) {
-        logoPath = logoUrl;
+    public void onUploadSuccess(UploadResponse response) {
+        logoPath = response.getUrl();
+        Utility.showToast(response.getMessage());
     }
 
     @Override

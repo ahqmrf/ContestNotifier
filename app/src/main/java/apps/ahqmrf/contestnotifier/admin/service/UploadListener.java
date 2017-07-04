@@ -1,5 +1,6 @@
 package apps.ahqmrf.contestnotifier.admin.service;
 
+import apps.ahqmrf.contestnotifier.admin.response.UploadResponse;
 import apps.ahqmrf.contestnotifier.base.DataCatchListener;
 
 /**
@@ -8,5 +9,5 @@ import apps.ahqmrf.contestnotifier.base.DataCatchListener;
 
 public interface UploadListener extends DataCatchListener {
 
-    void onLogoUrlRetrieved(String logoUrl);
+    void onUploadSuccess(UploadResponse response);
 }
