@@ -101,15 +101,17 @@ public class HomeActivity extends BaseActivity implements ContestServiceListener
 
     @Override
     public void onContestsLoaded(List<Contest> contests) {
-        this.contests = new ArrayList<>();
-        this.contests.addAll(contests);
-        if (contests.isEmpty()) {
-            Utility.showToast(R.string.emtpy_contests);
-            return;
+        if (contests != null) {
+            this.contests = new ArrayList<>();
+            this.contests.addAll(contests);
+            if (contests.isEmpty()) {
+                Utility.showToast(R.string.emtpy_contests);
+                return;
+            }
+            adapter.addItems(contests);
+            adapter.notifyDataSetChanged();
+            if (platforms != null && platforms.size() > 0) platformsView.setSelection(0);
         }
-        adapter.addItems(contests);
-        adapter.notifyDataSetChanged();
-        if(platforms != null && platforms.size() > 0) platformsView.setSelection(0);
     }
 
     @OnClick(R.id.btn_refresh)
@@ -126,7 +128,8 @@ public class HomeActivity extends BaseActivity implements ContestServiceListener
             platform = new Platform();
             platform.setName("Select a platform");
             platforms.add(0, platform);
-            this.platforms = platforms;
+            this.platforms = new ArrayList<>();
+            this.platforms.addAll(platforms);
 
             ArrayAdapter<Platform> adapter = new ArrayAdapter<>(this, R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
