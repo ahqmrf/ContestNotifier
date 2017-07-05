@@ -32,7 +32,7 @@
     <string name="error_permission">Permission required to select media</string>
     <string name="msg_file_chosen">File chosen successfully</string>
     <string name="label_add_website">Add a contest platform</string>
-    <string name="label_website_url">Platform website url</string>
+    <string name="label_website_url">Platform platform url</string>
     <string name="label_logo">Platform logo</string>
     <string name="button_choose">Choose</string>
     <string name="button_upload">Upload</string>

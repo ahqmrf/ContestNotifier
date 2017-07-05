@@ -17,11 +17,9 @@ import java.util.List;
 
 import apps.ahqmrf.contestnotifier.R;
 import apps.ahqmrf.contestnotifier.admin.model.Contest;
-import apps.ahqmrf.contestnotifier.admin.model.Division;
-import apps.ahqmrf.contestnotifier.admin.model.Website;
+import apps.ahqmrf.contestnotifier.admin.model.Platform;
 import apps.ahqmrf.contestnotifier.admin.service.AdminConnector;
-import apps.ahqmrf.contestnotifier.admin.service.GetDivisionListener;
-import apps.ahqmrf.contestnotifier.admin.service.GetWebsiteListener;
+import apps.ahqmrf.contestnotifier.admin.service.PlatformRetrieveListener;
 import apps.ahqmrf.contestnotifier.admin.ui.AdminPanelActivity;
 import apps.ahqmrf.contestnotifier.base.BaseActivity;
 import apps.ahqmrf.contestnotifier.contest.service.ContestConnector;
@@ -31,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class HomeActivity extends BaseActivity implements ContestServiceListener, GetWebsiteListener {
+public class HomeActivity extends BaseActivity implements ContestServiceListener, PlatformRetrieveListener {
 
     @BindView(R.id.progress_layout) ProgressView     progressView;
     @BindView(R.id.contests)        RecyclerView     contestsView;
@@ -39,7 +37,7 @@ public class HomeActivity extends BaseActivity implements ContestServiceListener
 
     private ContestConnector connector;
     private ContestAdapter   adapter;
-    private List<Website>    websites;
+    private List<Platform>   platforms;
     private List<Contest>    contests;
 
     @Override
@@ -58,7 +56,7 @@ public class HomeActivity extends BaseActivity implements ContestServiceListener
         contestsView.setAdapter(adapter);
 
         connector = new ContestConnector(this);
-        new AdminConnector(this).getWebsites();
+        new AdminConnector(this).getPlatforms();
         refresh();
     }
 
@@ -111,7 +109,7 @@ public class HomeActivity extends BaseActivity implements ContestServiceListener
         }
         adapter.addItems(contests);
         adapter.notifyDataSetChanged();
-        if(websites != null && websites.size() > 0) platformsView.setSelection(0);
+        if(platforms != null && platforms.size() > 0) platformsView.setSelection(0);
     }
 
     @OnClick(R.id.btn_refresh)
@@ -120,19 +118,19 @@ public class HomeActivity extends BaseActivity implements ContestServiceListener
     }
 
     @Override
-    public void onWebsiteListLoaded(final List<Website> websites) {
-        if (websites != null) {
-            Website website = new Website();
-            website.setName("-All platforms-");
-            websites.add(0, website);
-            website = new Website();
-            website.setName("Select a platform");
-            websites.add(0, website);
-            this.websites = websites;
+    public void onWebsiteListLoaded(final List<Platform> platforms) {
+        if (platforms != null) {
+            Platform platform = new Platform();
+            platform.setName("-All platforms-");
+            platforms.add(0, platform);
+            platform = new Platform();
+            platform.setName("Select a platform");
+            platforms.add(0, platform);
+            this.platforms = platforms;
 
-            ArrayAdapter<Website> adapter = new ArrayAdapter<>(this, R.layout.simple_spinner_item);
+            ArrayAdapter<Platform> adapter = new ArrayAdapter<>(this, R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            adapter.addAll(websites);
+            adapter.addAll(platforms);
 
             platformsView.setAdapter(adapter);
             platformsView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -153,7 +151,7 @@ public class HomeActivity extends BaseActivity implements ContestServiceListener
         if (position < 2) {
             adapter.addItems(contests);
         } else {
-            String selectedPlatform = websites.get(position).getName();
+            String selectedPlatform = platforms.get(position).getName();
             List<Contest> filteredContests = new ArrayList<>();
             for (Contest contest : contests) {
                 if (contest.getPlatform().equals(selectedPlatform)) {

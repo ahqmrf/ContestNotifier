@@ -30,11 +30,11 @@ import java.util.List;
 import apps.ahqmrf.contestnotifier.R;
 import apps.ahqmrf.contestnotifier.admin.model.Contest;
 import apps.ahqmrf.contestnotifier.admin.model.Division;
-import apps.ahqmrf.contestnotifier.admin.model.Website;
+import apps.ahqmrf.contestnotifier.admin.model.Platform;
 import apps.ahqmrf.contestnotifier.admin.response.UploadResponse;
 import apps.ahqmrf.contestnotifier.admin.service.AdminConnector;
-import apps.ahqmrf.contestnotifier.admin.service.GetDivisionListener;
-import apps.ahqmrf.contestnotifier.admin.service.GetWebsiteListener;
+import apps.ahqmrf.contestnotifier.admin.service.DivisionRetrieveListener;
+import apps.ahqmrf.contestnotifier.admin.service.PlatformRetrieveListener;
 import apps.ahqmrf.contestnotifier.admin.service.UploadListener;
 import apps.ahqmrf.contestnotifier.base.BaseActivity;
 import apps.ahqmrf.contestnotifier.utils.Const;
@@ -43,35 +43,35 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AdminPanelActivity extends BaseActivity implements UploadListener, View.OnFocusChangeListener, GetWebsiteListener, GetDivisionListener, AdapterView.OnItemSelectedListener {
+public class AdminPanelActivity extends BaseActivity implements UploadListener, View.OnFocusChangeListener, PlatformRetrieveListener, DivisionRetrieveListener, AdapterView.OnItemSelectedListener {
 
-    @BindView(R.id.progress_layout)    ProgressView     progressView;
-    @BindView(R.id.input_name)         EditText         nameView;
-    @BindView(R.id.input_website_url)  EditText         urlView;
-    @BindView(R.id.input_logo)         EditText         logoView;
-    @BindView(R.id.layout_add_website) View             addWebsiteLayout;
-    @BindView(R.id.layout_add_contest) View             addContestLayout;
-    @BindView(R.id.dropdownWebsite)    ImageView        dropdownView;
-    @BindView(R.id.dropdownContest)    ImageView        dropdownContestView;
-    @BindView(R.id.input_contest_url)  EditText         contestUrlView;
-    @BindView(R.id.input_contest_name) EditText         contestNameView;
-    @BindView(R.id.input_time)         EditText         timeView;
-    @BindView(R.id.platformSpinner)    AppCompatSpinner platformView;
-    @BindView(R.id.divisionSpinner)    AppCompatSpinner divisionView;
-    @BindView(R.id.daySpinner)         AppCompatSpinner daySpinnerView;
-    @BindView(R.id.hourSpinner)        AppCompatSpinner hourSpinnerView;
-    @BindView(R.id.minuteSpinner)      AppCompatSpinner minuteSpinnerView;
-    @BindView(R.id.text_duration)      TextView         durationView;
+    @BindView(R.id.progress_layout)     ProgressView     progressView;
+    @BindView(R.id.input_name)          EditText         nameView;
+    @BindView(R.id.input_platform_url)  EditText         urlView;
+    @BindView(R.id.input_logo)          EditText         logoView;
+    @BindView(R.id.layout_add_platform) View             addPlatformLayout;
+    @BindView(R.id.layout_add_contest)  View             addContestLayout;
+    @BindView(R.id.dropdownPlatform)    ImageView        dropdownPlatformView;
+    @BindView(R.id.dropdownContest)     ImageView        dropdownContestView;
+    @BindView(R.id.input_contest_url)   EditText         contestUrlView;
+    @BindView(R.id.input_contest_name)  EditText         contestNameView;
+    @BindView(R.id.input_time)          EditText         timeView;
+    @BindView(R.id.platformSpinner)     AppCompatSpinner platformView;
+    @BindView(R.id.divisionSpinner)     AppCompatSpinner divisionView;
+    @BindView(R.id.daySpinner)          AppCompatSpinner daySpinnerView;
+    @BindView(R.id.hourSpinner)         AppCompatSpinner hourSpinnerView;
+    @BindView(R.id.minuteSpinner)       AppCompatSpinner minuteSpinnerView;
+    @BindView(R.id.text_duration)       TextView         durationView;
 
     private File   file;
     private String logoPath;
-    private int    mYear, mMonth, mDay, mHour, mMinute;
+    private int    year, month, day, hour, minute;
     private String date, time;
-    private Calendar c = Calendar.getInstance();
+    private Calendar calendar = Calendar.getInstance();
     private AdminConnector connector;
     private List<Division> divisions;
-    private List<Website>  websites;
-    private int selectedWebsite  = 0;
+    private List<Platform> platforms;
+    private int selectedPlatform = 0;
     private int selectedDivision = 0;
     private int dayIndex         = 0, hourIndex = 0, minuteIndex = 0;
 
@@ -96,7 +96,7 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
 
         setTimeDate();
 
-        connector.getWebsites();
+        connector.getPlatforms();
         connector.getDivisions();
 
         setSpinnerListeners();
@@ -120,22 +120,22 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
     }
 
     private void setTimeDate() {
-        mHour = c.get(Calendar.HOUR_OF_DAY);
-        mMinute = c.get(Calendar.MINUTE);
+        hour = calendar.get(Calendar.HOUR_OF_DAY);
+        minute = calendar.get(Calendar.MINUTE);
 
         String str = "AM";
-        if (mHour > 12) {
-            mHour -= 12;
+        if (hour > 12) {
+            hour -= 12;
             str = "PM";
         }
 
-        time = (mHour < 10 ? "0" : "") + mHour + ":" + (mMinute < 10 ? "0" : "") + mMinute + " " + str;
+        time = (hour < 10 ? "0" : "") + hour + ":" + (minute < 10 ? "0" : "") + minute + " " + str;
 
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH) + 1;
-        mDay = c.get(Calendar.DAY_OF_MONTH);
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH) + 1;
+        day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        date = mYear + "/" + (mMonth < 10? "0" : "") + mMonth + "/" + (mDay < 10? "0" : "") + mDay;
+        date = year + "/" + (month < 10 ? "0" : "") + month + "/" + (day < 10 ? "0" : "") + day;
 
         timeView.setText(time + ", " + date);
     }
@@ -148,7 +148,7 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
             Utility.showToast(R.string.error_empty_contest_name);
             return;
         }
-        if (selectedWebsite == 0) {
+        if (selectedPlatform == 0) {
             Utility.showToast(R.string.error_website_selection);
             return;
         }
@@ -157,7 +157,7 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
             return;
         }
 
-        Website website = websites.get(selectedWebsite);
+        Platform platform = platforms.get(selectedPlatform);
         Division division = divisions.get(selectedDivision);
 
         Contest contest = new Contest();
@@ -165,9 +165,9 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
         contest.setContestUrl(contestUrl);
         contest.setTime(time);
         contest.setDate(date);
-        contest.setPlatform(website.getName());
-        contest.setPlatformUrl(website.getUrl());
-        contest.setLogo(website.getLogo());
+        contest.setPlatform(platform.getName());
+        contest.setPlatformUrl(platform.getUrl());
+        contest.setLogo(platform.getLogo());
         contest.setDivision(division.getType());
 
         contest.setDuration(getSelectedTime());
@@ -238,24 +238,24 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
             return;
         }
 
-        Website website = new Website();
-        website.setName(name);
-        website.setUrl(url);
-        website.setLogo(logoPath == null ? "" : logoPath);
+        Platform platform = new Platform();
+        platform.setName(name);
+        platform.setUrl(url);
+        platform.setLogo(logoPath == null ? "" : logoPath);
 
-        connector.addWebsite(website);
-        connector.getWebsites();
+        connector.addPlatform(platform);
+        connector.getPlatforms();
     }
 
-    @OnClick({R.id.add_website, R.id.dropdownWebsite})
+    @OnClick({R.id.add_platform, R.id.dropdownPlatform})
     void onAddWebsiteClick() {
-        if (addWebsiteLayout.getVisibility() == View.VISIBLE) {
-            addWebsiteLayout.setVisibility(View.GONE);
-            dropdownView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
+        if (addPlatformLayout.getVisibility() == View.VISIBLE) {
+            addPlatformLayout.setVisibility(View.GONE);
+            dropdownPlatformView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
         } else {
-            addWebsiteLayout.setVisibility(View.VISIBLE);
+            addPlatformLayout.setVisibility(View.VISIBLE);
             addContestLayout.setVisibility(View.GONE);
-            dropdownView.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp);
+            dropdownPlatformView.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp);
             dropdownContestView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
         }
     }
@@ -267,17 +267,17 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
             dropdownContestView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
         } else {
             addContestLayout.setVisibility(View.VISIBLE);
-            addWebsiteLayout.setVisibility(View.GONE);
-            dropdownView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
+            addPlatformLayout.setVisibility(View.GONE);
+            dropdownPlatformView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
             dropdownContestView.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp);
         }
     }
 
     @OnClick(R.id.btn_time)
     void onTimeClick() {
-        c = Calendar.getInstance();
-        mHour = c.get(Calendar.HOUR_OF_DAY);
-        mMinute = c.get(Calendar.MINUTE);
+        calendar = Calendar.getInstance();
+        hour = calendar.get(Calendar.HOUR_OF_DAY);
+        minute = calendar.get(Calendar.MINUTE);
 
         // Launch Time Picker Dialog
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
@@ -296,15 +296,15 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
                         openDatePicker();
 
                     }
-                }, mHour, mMinute, false);
+                }, hour, minute, false);
         timePickerDialog.show();
     }
 
     void openDatePicker() {
-        c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
@@ -314,11 +314,11 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
                         monthOfYear++;
-                        date = year + "/" + (monthOfYear < 10? "0" : "") + monthOfYear + "/" + (dayOfMonth < 10? "0" : "") +dayOfMonth;
+                        date = year + "/" + (monthOfYear < 10 ? "0" : "") + monthOfYear + "/" + (dayOfMonth < 10 ? "0" : "") + dayOfMonth;
                         timeView.setText(time + ", " + date);
 
                     }
-                }, mYear, mMonth, mDay);
+                }, year, month, day);
         datePickerDialog.show();
     }
 
@@ -401,16 +401,16 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
     }
 
     @Override
-    public void onWebsiteListLoaded(List<Website> websites) {
-        if (websites != null) {
-            Website website = new Website();
-            website.setName("Select a platform");
-            websites.add(0, website);
-            this.websites = websites;
+    public void onWebsiteListLoaded(List<Platform> platforms) {
+        if (platforms != null) {
+            Platform platform = new Platform();
+            platform.setName("Select a platform");
+            platforms.add(0, platform);
+            this.platforms = platforms;
 
-            ArrayAdapter<Website> adapter = new ArrayAdapter<>(this, R.layout.simple_spinner_item);
+            ArrayAdapter<Platform> adapter = new ArrayAdapter<>(this, R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            adapter.addAll(websites);
+            adapter.addAll(platforms);
 
             platformView.setAdapter(adapter);
         }
@@ -436,7 +436,7 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         int resId = parent.getId();
         if (resId == R.id.platformSpinner) {
-            selectedWebsite = position;
+            selectedPlatform = position;
         } else if (resId == R.id.divisionSpinner) {
             selectedDivision = position;
         } else if (resId == R.id.daySpinner) {

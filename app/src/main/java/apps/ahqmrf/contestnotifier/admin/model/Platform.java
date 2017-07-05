@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by bsse0 on 7/2/2017.
  */
 
-public class Website {
+public class Platform {
     @SerializedName("id") private long id;
     @SerializedName("name") private String name;
     @SerializedName("url") private String url;

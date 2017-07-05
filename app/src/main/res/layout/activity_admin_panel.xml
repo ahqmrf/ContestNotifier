@@ -31,7 +31,7 @@
                 app:cardPreventCornerOverlap="false">
 
                 <LinearLayout
-                    android:id="@+id/add_website"
+                    android:id="@+id/add_platform"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackground"
@@ -39,7 +39,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/dropdownWebsite"
+                        android:id="@+id/dropdownPlatform"
                         android:layout_width="40dp"
                         android:layout_height="56dp"
                         android:background="?attr/selectableItemBackground"
@@ -62,7 +62,7 @@
 
 
             <LinearLayout
-                android:id="@+id/layout_add_website"
+                android:id="@+id/layout_add_platform"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -77,7 +77,7 @@
                     android:inputType="text"/>
 
                 <EditText
-                    android:id="@+id/input_website_url"
+                    android:id="@+id/input_platform_url"
                     style="@style/InputStyle"
                     android:layout_marginTop="16dp"
                     android:hint="@string/label_website_url"

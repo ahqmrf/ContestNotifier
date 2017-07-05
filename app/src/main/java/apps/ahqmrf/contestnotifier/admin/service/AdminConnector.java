@@ -3,10 +3,10 @@ package apps.ahqmrf.contestnotifier.admin.service;
 import java.io.File;
 
 import apps.ahqmrf.contestnotifier.admin.model.Contest;
-import apps.ahqmrf.contestnotifier.admin.model.Website;
+import apps.ahqmrf.contestnotifier.admin.model.Platform;
 import apps.ahqmrf.contestnotifier.admin.response.DivisionResponse;
 import apps.ahqmrf.contestnotifier.admin.response.UploadResponse;
-import apps.ahqmrf.contestnotifier.admin.response.WebsiteResponse;
+import apps.ahqmrf.contestnotifier.admin.response.PlatformResponse;
 import apps.ahqmrf.contestnotifier.base.BaseResponse;
 import apps.ahqmrf.contestnotifier.base.DataCatchListener;
 import apps.ahqmrf.contestnotifier.base.ServiceCallback;
@@ -51,10 +51,10 @@ public class AdminConnector {
         }
     }
 
-    public void addWebsite(Website website) {
+    public void addPlatform(Platform platform) {
         if(listener != null) {
             listener.showLoader();
-            Call<BaseResponse> call = service.addWebsite(website);
+            Call<BaseResponse> call = service.addPlatform(platform);
             call.enqueue(new ServiceCallback<BaseResponse>(listener) {
                 @Override
                 public void onResponse(Response<BaseResponse> response) {
@@ -67,16 +67,16 @@ public class AdminConnector {
         }
     }
 
-    public void getWebsites() {
+    public void getPlatforms() {
         if(listener != null) {
             listener.showLoader();
-            Call<WebsiteResponse> call = service.getWebsites();
-            call.enqueue(new ServiceCallback<WebsiteResponse>(listener) {
+            Call<PlatformResponse> call = service.getPlatforms();
+            call.enqueue(new ServiceCallback<PlatformResponse>(listener) {
                 @Override
-                public void onResponse(Response<WebsiteResponse> response) {
-                    WebsiteResponse data = response.body();
+                public void onResponse(Response<PlatformResponse> response) {
+                    PlatformResponse data = response.body();
                     if(data != null) {
-                        ((GetWebsiteListener)listener).onWebsiteListLoaded(data.getWebsites());
+                        ((PlatformRetrieveListener)listener).onWebsiteListLoaded(data.getPlatforms());
                     }
                 }
             });
@@ -92,7 +92,7 @@ public class AdminConnector {
                 public void onResponse(Response<DivisionResponse> response) {
                     DivisionResponse data = response.body();
                     if(data != null) {
-                        ((GetDivisionListener)listener).onDivisionsLoaded(data.getDivisions());
+                        ((DivisionRetrieveListener)listener).onDivisionsLoaded(data.getDivisions());
                     }
                 }
             });

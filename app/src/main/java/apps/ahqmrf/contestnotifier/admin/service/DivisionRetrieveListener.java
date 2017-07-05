@@ -9,7 +9,7 @@ import apps.ahqmrf.contestnotifier.base.DataCatchListener;
  * Created by bsse0 on 7/3/2017.
  */
 
-public interface GetDivisionListener extends DataCatchListener{
+public interface DivisionRetrieveListener extends DataCatchListener{
 
     void onDivisionsLoaded(List<Division> divisions);
 }
