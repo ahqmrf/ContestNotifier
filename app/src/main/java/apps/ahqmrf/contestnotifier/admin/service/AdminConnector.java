@@ -76,7 +76,7 @@ public class AdminConnector {
                 public void onResponse(Response<PlatformResponse> response) {
                     PlatformResponse data = response.body();
                     if(data != null) {
-                        ((PlatformRetrieveListener)listener).onWebsiteListLoaded(data.getPlatforms());
+                        ((PlatformRetrieveListener)listener).onPlatformsLoaded(data.getPlatforms());
                     }
                 }
             });

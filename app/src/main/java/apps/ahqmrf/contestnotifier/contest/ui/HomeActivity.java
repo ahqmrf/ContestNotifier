@@ -118,7 +118,7 @@ public class HomeActivity extends BaseActivity implements ContestServiceListener
     }
 
     @Override
-    public void onWebsiteListLoaded(final List<Platform> platforms) {
+    public void onPlatformsLoaded(final List<Platform> platforms) {
         if (platforms != null) {
             Platform platform = new Platform();
             platform.setName("-All platforms-");

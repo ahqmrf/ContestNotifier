@@ -401,7 +401,7 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
     }
 
     @Override
-    public void onWebsiteListLoaded(List<Platform> platforms) {
+    public void onPlatformsLoaded(List<Platform> platforms) {
         if (platforms != null) {
             Platform platform = new Platform();
             platform.setName("Select a platform");

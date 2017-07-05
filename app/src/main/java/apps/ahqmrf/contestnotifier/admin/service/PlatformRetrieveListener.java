@@ -11,5 +11,5 @@ import apps.ahqmrf.contestnotifier.base.DataCatchListener;
 
 public interface PlatformRetrieveListener extends DataCatchListener {
 
-    void onWebsiteListLoaded(List<Platform> platforms);
+    void onPlatformsLoaded(List<Platform> platforms);
 }
