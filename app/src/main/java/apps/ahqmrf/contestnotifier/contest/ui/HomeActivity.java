@@ -125,6 +125,7 @@ public class HomeActivity extends BaseActivity implements ContestServiceListener
             Platform platform = new Platform();
             platform.setName("-All platforms-");
             platforms.add(0, platform);
+
             platform = new Platform();
             platform.setName("Select a platform");
             platforms.add(0, platform);
