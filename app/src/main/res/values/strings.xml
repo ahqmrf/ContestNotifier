@@ -53,4 +53,5 @@
     <string name="label_minute">:</string>
     <string name="label_day">:</string>
     <string name="label_duration">Duration: </string>
+    <string name="emtpy_contests">No contests found</string>
 </resources>

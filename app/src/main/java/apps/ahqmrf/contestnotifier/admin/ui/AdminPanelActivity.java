@@ -254,7 +254,9 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
             dropdownView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
         } else {
             addWebsiteLayout.setVisibility(View.VISIBLE);
+            addContestLayout.setVisibility(View.GONE);
             dropdownView.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp);
+            dropdownContestView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
         }
     }
 
@@ -265,6 +267,8 @@ public class AdminPanelActivity extends BaseActivity implements UploadListener, 
             dropdownContestView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
         } else {
             addContestLayout.setVisibility(View.VISIBLE);
+            addWebsiteLayout.setVisibility(View.GONE);
+            dropdownView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
             dropdownContestView.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp);
         }
     }
